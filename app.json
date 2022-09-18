@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "tv-series-challenge",
+    "slug": "tv-series-challenge",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
