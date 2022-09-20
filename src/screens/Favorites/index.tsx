@@ -29,10 +29,17 @@ export function Favorites() {
               key={serie.id}
               onPress={() => handleSerieDetail(serie.id)}
             >
-              <Image
-                style={styles.image}
-                source={{ uri: serie.image.medium }}
-              />
+              {serie.image?.medium ? (
+                <Image
+                  style={styles.image}
+                  source={{ uri: serie.image?.medium }}
+                />
+              ) : (
+                <Image
+                  style={styles.image}
+                  source={require("@assets/noImage.png")}
+                />
+              )}
               <Text style={styles.text}>{serie.name}</Text>
             </TouchableOpacity>
           ))}

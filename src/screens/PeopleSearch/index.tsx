@@ -1,22 +1,31 @@
-import { SearchDTO } from "@dtos/SearchDTO";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { Text, TouchableOpacity, Image, ActivityIndicator } from "react-native";
 
-import { Container } from "./styles";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
+
 import api from "@services/api";
-import { Text, TouchableOpacity, Image } from "react-native";
+import { Container, ViewInput, styles } from "./styles";
+import { SearchPeopleDTO } from "@dtos/SearchPeopleDTO";
 
 export function PeopleSearch() {
-  const [serieSearchText, setSerieSearchText] = useState("");
-  const [apiData, setApiData] = useState<SearchDTO[]>([]);
+  const [peopleSearchText, setPeopleSearchText] = useState("");
+  const [apiData, setApiData] = useState<SearchPeopleDTO[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigation = useNavigation();
 
-  async function handleSearchSerie() {
+  useEffect(() => {
+    if (apiData) {
+      setIsLoading(false);
+    }
+  }, [apiData]);
+
+  async function handlePeopleSerie() {
+    setIsLoading(true);
     api
-      .get(`/search/shows?q=:${serieSearchText}`)
+      .get(`/search/people?q=:${peopleSearchText}`)
       .then((response) => {
         setApiData(response.data);
       })
@@ -25,39 +34,47 @@ export function PeopleSearch() {
       });
   }
 
-  // function handleSerieDetail(id: number) {
-  //   navigation.navigate("Serie", { id });
-  // }
+  function handlePeopleDetail(id: number) {
+    navigation.navigate("People", { id });
+  }
 
   return (
     <Container>
-      <Input
-        iconName="search"
-        placeholder="Person you wanna search"
-        autoCorrect={false}
-        autoCapitalize="none"
-        onChangeText={setSerieSearchText}
-        value={serieSearchText}
-      />
+      <ViewInput>
+        <Input
+          iconName="search"
+          placeholder="Person Name"
+          autoCorrect={false}
+          onChangeText={setPeopleSearchText}
+          value={peopleSearchText}
+        />
+      </ViewInput>
 
-      <Button title="Search Person" color="green" onPress={handleSearchSerie} />
+      <Button title="Search Person" color="green" onPress={handlePeopleSerie} />
 
-      {/* {apiData &&
-        apiData.map((serie) => (
+      {isLoading && <ActivityIndicator size={24} />}
+
+      {apiData &&
+        apiData.map((currentPerson) => (
           <TouchableOpacity
-            key={`${serie.show.id}`}
+            key={`${currentPerson.person.id}`}
             style={styles.containerSeries}
-            onPress={() => handleSerieDetail(serie.show.id)}
+            onPress={() => handlePeopleDetail(currentPerson.person.id)}
           >
-            {serie.show.image?.medium && (
+            {currentPerson.person.image?.medium ? (
               <Image
                 style={styles.image}
-                source={{ uri: serie.show.image?.medium }}
+                source={{ uri: currentPerson.person.image?.medium }}
+              />
+            ) : (
+              <Image
+                style={styles.image}
+                source={require("@assets/noImage.png")}
               />
             )}
-            <Text style={styles.text}>{serie.show.name}</Text>
+            <Text style={styles.text}>{currentPerson.person.name}</Text>
           </TouchableOpacity>
-        ))} */}
+        ))}
     </Container>
   );
 }

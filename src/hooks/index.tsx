@@ -1,4 +1,6 @@
 import React, { ReactNode } from "react";
+
+import { UserProvider } from "./user";
 import { FavoritesProvider } from "./favorites";
 
 interface AppProviderProps {
@@ -6,7 +8,11 @@ interface AppProviderProps {
 }
 
 function AppProvider({ children }: AppProviderProps) {
-  return <FavoritesProvider>{children}</FavoritesProvider>;
+  return (
+    <UserProvider>
+      <FavoritesProvider>{children}</FavoritesProvider>
+    </UserProvider>
+  );
 }
 
 export { AppProvider };

@@ -6,7 +6,7 @@ export interface SerieDTO {
     time: string;
     days: string[];
   };
-  image: {
+  image?: {
     medium: string;
   };
   summary: string;

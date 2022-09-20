@@ -18,13 +18,13 @@ export const IconContainer = styled.View<Props>`
 
   margin-right: 2px;
 
-  background-color: white;
+  background-color: gray;
 
   ${({ theme, isFocused }) =>
     isFocused &&
     css`
       border-bottom-width: 2px;
-      border-bottom-color: red;
+      border-bottom-color: white;
     `}
 `;
 
@@ -32,7 +32,7 @@ export const InputText = styled(TextInput)<Props>`
   flex: 1;
   background-color: gray;
 
-  font-size: 15px;
+  font-size: 20px;
   color: white;
   padding: 0 23px;
 
@@ -40,6 +40,6 @@ export const InputText = styled(TextInput)<Props>`
     isFocused &&
     css`
       border-bottom-width: 2px;
-      border-bottom-color: red;
+      border-bottom-color: white;
     `}
 `;

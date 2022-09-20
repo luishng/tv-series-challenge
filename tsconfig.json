@@ -9,6 +9,7 @@
       "@screens/*": ["./src/screens/*"],
       "@storage/*": ["./src/storage/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@assets/*": ["./src/assets/*"],
       "@services/*": ["./src/services/*"]
     }
   },

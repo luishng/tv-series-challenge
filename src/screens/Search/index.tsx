@@ -2,7 +2,7 @@ import { SearchDTO } from "@dtos/SearchDTO";
 import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import { Container, styles } from "./styles";
+import { Container, ViewInput, styles } from "./styles";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 import api from "@services/api";
@@ -39,16 +39,18 @@ export function Search() {
 
   return (
     <Container>
-      <Input
-        iconName="search"
-        placeholder="Serie you wanna search"
-        autoCorrect={false}
-        autoCapitalize="none"
-        onChangeText={setSerieSearchText}
-        returnKeyType="search"
-        value={serieSearchText}
-        onSubmitEditing={handleSearchSerie}
-      />
+      <ViewInput>
+        <Input
+          iconName="search"
+          placeholder="Serie Name"
+          autoCorrect={false}
+          autoCapitalize="none"
+          onChangeText={setSerieSearchText}
+          returnKeyType="search"
+          value={serieSearchText}
+          onSubmitEditing={handleSearchSerie}
+        />
+      </ViewInput>
 
       <Button title="Search Serie" color="green" onPress={handleSearchSerie} />
 
@@ -61,10 +63,15 @@ export function Search() {
             style={styles.containerSeries}
             onPress={() => handleSerieDetail(serie.show.id)}
           >
-            {serie.show.image?.medium && (
+            {serie.show.image?.medium ? (
               <Image
                 style={styles.image}
                 source={{ uri: serie.show.image?.medium }}
+              />
+            ) : (
+              <Image
+                style={styles.image}
+                source={require("@assets/noImage.png")}
               />
             )}
             <Text style={styles.text}>{serie.show.name}</Text>

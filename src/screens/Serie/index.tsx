@@ -21,6 +21,7 @@ import {
   SummaryTitle,
   Summary,
   EpisodesTitle,
+  LoadingTitle,
   styles,
 } from "./styles";
 import { BackButton } from "@components/BackButton";
@@ -117,7 +118,7 @@ export function Serie() {
   return (
     <Container>
       {isLoadingSerie ? (
-        <SummaryTitle>Loading Serie Detail...</SummaryTitle>
+        <LoadingTitle>Loading Serie Detail...</LoadingTitle>
       ) : (
         <View>
           <HeaderSerie>
@@ -130,7 +131,11 @@ export function Serie() {
           </HeaderSerie>
 
           <SerieTitle>{serieData.name}</SerieTitle>
-          <SerieImage source={{ uri: serieData.image.medium }} />
+          {serieData.image?.medium ? (
+            <SerieImage source={{ uri: serieData.image.medium }} />
+          ) : (
+            <SerieImage source={require("@assets/noImage.png")} />
+          )}
           <SerieTime>Time: {serieData.schedule.time}</SerieTime>
 
           <ViewDaysAndGenders>
@@ -158,7 +163,7 @@ export function Serie() {
       )}
 
       {isLoadingEpisodes ? (
-        <SummaryTitle>Loading Episodes...</SummaryTitle>
+        <LoadingTitle>Loading Episodes...</LoadingTitle>
       ) : (
         <>
           <EpisodesTitle>Episodes</EpisodesTitle>

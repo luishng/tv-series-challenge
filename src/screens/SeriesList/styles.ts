@@ -19,6 +19,12 @@ export const styles = StyleSheet.create({
     marginBottom: 6,
     borderRadius: 2,
   },
+  containerHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
+  },
   textScreenTitle: {
     color: "#fff",
     fontSize: 24,

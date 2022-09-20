@@ -5,6 +5,7 @@ import { useRoute, useNavigation } from "@react-navigation/native";
 import { EpisodeDTO } from "@dtos/EpisodeDTO";
 
 import api from "@services/api";
+import NoImg from "@assets/noImage.png";
 
 import {
   Container,
@@ -78,8 +79,10 @@ export function Episode() {
           </HeaderEpisode>
 
           <EpisodeTitle>{episodeData.name}</EpisodeTitle>
-          {episodeData.image?.medium && (
+          {episodeData.image?.medium ? (
             <EpisodeImage source={{ uri: episodeData.image.medium }} />
+          ) : (
+            <EpisodeImage source={{ uri: NoImg }} />
           )}
           <ViewEpisodeInfos>
             <View>

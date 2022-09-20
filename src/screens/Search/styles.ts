@@ -27,8 +27,11 @@ export const styles = StyleSheet.create({
 
 export const Container = styled.ScrollView`
   flex: 1;
-  padding-top: 30px;
   padding-left: 24px;
   padding-right: 24px;
   background-color: #1b1b1f;
+`;
+
+export const ViewInput = styled.View`
+  margin-top: 24px;
 `;
