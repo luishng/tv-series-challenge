@@ -33,5 +33,5 @@ export const Container = styled.ScrollView`
 `;
 
 export const ViewInput = styled.View`
-  margin-top: 24px;
+  margin-top: 35px;
 `;

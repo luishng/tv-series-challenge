@@ -12,7 +12,7 @@ export function Routes() {
   return (
     <View style={{ flex: 1, backgroundColor: "#1b1b1f" }}>
       <NavigationContainer>
-        {true ? <AppTabRoutes /> : <AuthRoutes />}
+        {user ? <AppTabRoutes /> : <AuthRoutes />}
       </NavigationContainer>
     </View>
   );

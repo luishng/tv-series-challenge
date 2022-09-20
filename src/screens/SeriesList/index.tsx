@@ -40,7 +40,7 @@ export function SeriesList() {
   }, [currentPage]);
 
   useEffect(() => {
-    if (apiData) {
+    if (apiData.length) {
       setLoading(false);
     }
   }, [apiData]);
@@ -59,7 +59,7 @@ export function SeriesList() {
 
   return (
     <View style={styles.container}>
-      {isLoading && <ActivityIndicator size="large" />}
+      {isLoading && <ActivityIndicator size={24} />}
 
       {!isLoading && (
         <>

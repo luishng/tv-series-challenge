@@ -82,7 +82,7 @@ export function Episode() {
           {episodeData.image?.medium ? (
             <EpisodeImage source={{ uri: episodeData.image.medium }} />
           ) : (
-            <EpisodeImage source={{ uri: NoImg }} />
+            <EpisodeImage source={require("@assets/noImage.png")} />
           )}
           <ViewEpisodeInfos>
             <View>

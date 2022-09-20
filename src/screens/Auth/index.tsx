@@ -25,7 +25,7 @@ export function Auth() {
   async function handleBiometric() {
     const biometricAuth = await LocalAuthentication.authenticateAsync();
 
-    if (biometricAuth) {
+    if (biometricAuth.success) {
       changeUser(true);
     }
   }

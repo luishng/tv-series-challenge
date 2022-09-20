@@ -33,7 +33,7 @@ export const Container = styled.ScrollView`
 `;
 
 export const HeaderSerie = styled.View`
-  margin-top: 30px;
+  margin-top: 40px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

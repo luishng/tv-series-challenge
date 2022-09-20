@@ -35,5 +35,5 @@ export const Container = styled.ScrollView.attrs({
 `;
 
 export const ViewInput = styled.View`
-  margin-top: 24px;
+  margin-top: 35px;
 `;
